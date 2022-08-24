@@ -146,24 +146,24 @@ $(".colorFilter").keyup(function(e){
 			return;
 		}
 		
-		m = /^#?\s*(\d{6})$/.exec(val);
+		m = /^#?\s*([\da-f]{6})$/.exec(val);
 		if(m && m.length>=2){
 			val = "#" + m[1];
 			log(val, m);
 			cols.each(function(){
 				var col = this.colorObject;
-				$(this).toggleClass("hidden", col.hex != m[1]);
+				$(this).toggleClass("hidden", col.hex != val);
 			});
 			return;
 		}
 		
-		m = /^#?\s*(\d{3})$/.exec(val);
+		m = /^#?\s*([\da-f]{3})$/.exec(val);
 		if(m && m.length>=2){
 			val = "#" + m[1][0] + m[1][0] + m[1][1] + m[1][1] + m[1][2] + m[1][2];
 			log(val, m);
 			cols.each(function(){
 				var col = this.colorObject;
-				$(this).toggleClass("hidden", col.hex != m[1]);
+				$(this).toggleClass("hidden", col.hex != val);
 			});
 			return;
 		}
@@ -175,6 +175,10 @@ $(".colorFilter").keyup(function(e){
 		});
 	}, 500);
 	
+});
+
+$("input+.closer").click(function(){
+	$(this).prev().val("").keyup();
 });
 
 $("body").on("mousemove", ".imgConstraint[loaded-file]", updateInfo);
