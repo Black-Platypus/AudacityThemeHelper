@@ -1,0 +1,338 @@
+html, body{
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+}
+body{
+	--color-foreground: #fff;
+	--color-foreground-dim: #bbb;
+	--color-background: #111;
+	--color-background-dim: #222;
+	--color-primary: #158;
+	--color-primary-dim: #035;
+	
+	text-align: center;
+	font-family: sans-serif;
+	color: var(--color-foreground);
+	background: var(--color-background);
+}
+#mainWrapper{
+	position: relative;
+	margin: auto;
+	text-align: left;
+	width: 100%;
+	box-sizing: border-box;
+	max-width: 1280px;
+	padding: 2em;
+	background: var(--color-background-dim);
+	box-shadow: 0 0 10px rgba(0,0,0,0.4);
+	overflow-x: hidden;
+	background-image: url("../img/background.png");
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+th{
+	vertical-align: top;
+	text-align: left;
+	padding: 0 0.5em 0.5em;
+}
+th h4{
+	margin: 0 0 0.5em 0;
+}
+td{
+	padding: 0.5em;
+	vertical-align: top;
+	position: relative;
+}
+button, .button{
+	cursor: pointer;
+	background: var(--color-primary);
+	color: var(--color-foreground);
+	display: inline-block;
+	padding: 0.5em 1em;
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	transition: all 0.5s;
+}
+button:hover, .button:hover{
+	background: var(--color-primary-dim);
+	border-color: var(--color-primary);
+	border-radius: 0;
+}
+button:active, .button:active{
+	background: var(--color-primary);
+	border-color: var(--color-primary-dim);
+	border-radius: 0;
+}
+.imgConstraint{
+	position: relative;
+	height: var(--img_fullHeight);
+}
+.croppingImages .imgConstraint{
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	max-height: var(--img_cropHeight);
+	overflow: hidden;
+	position: relative;
+}
+#transmap{
+	position: absolute;
+	left:0;
+	top:0;
+	width: var(--img_width);
+	height: var(--img_cropHeight);
+	opacity: 0.001;
+}
+.notLoaded{
+	display: flex;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+#addCompare{
+	margin: auto;
+	vertical-align: middle;
+	font-size: 400%;
+	font-weight: 300;
+	border: 0.06em solid var(--color-foreground-dim);
+	color: var(--color-foreground-dim);
+	opacity: 0.5;
+	cursor: pointer;
+	border-radius: 2em;
+	text-shadow: 0 0 0.3em rgba(0,0,0,1);
+	box-shadow: 0 0 0.2em 0.08em rgba(0,0,0,1), inset 0 0 0.2em 0.09em rgba(0,0,0,1);
+	display: flex;
+	width: 1.5em;
+	height: 1.5em;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	transition: all 0.5s;
+}
+#addCompare:hover{
+	/* border-color: transparent; */
+	color: var(--color-foreground);
+	background-color: var(--color-primary);
+	border-color: var(--color-primary-dim);
+	opacity: 1;
+	border-radius: 0;
+	text-shadow: 0 0 3em rgba(0,0,0,0);
+	box-shadow: 0 0 5em rgba(0,0,0,0);
+}
+#addCompare:active{
+	background-color: var(--color-primary-dim);
+	border-color: var(--color-primary);
+	opacity: 1;
+	border-radius: 0;
+	text-shadow: 0 0 3em rgba(0,0,0,0);
+	box-shadow: 0 0 5em rgba(0,0,0,0);
+}
+input, select, option, textarea{
+	background: var(--color-background);
+	color: var(--color-foreground);
+	padding: 0.5em;
+	box-sizing: border-box;
+}
+#choice_compare{
+	min-width: 150px;
+}
+
+#infoBox{
+	top: 2em;
+	display: inline-block;
+	position: fixed;
+	width: 270px;
+}
+
+#infoBox>table{
+	width: 100%;
+}
+#infoBox>table td:first-child{
+	width: 0;
+	padding-right: 0.6em;
+}
+#infoBox td{
+	color: var(--color-foreground-dim);
+	font-size: 80%;
+}
+#infoBox td{
+	padding: 0.2em;
+}
+#infoBox td:first-child{
+	padding-left: 0;
+}
+#infoBox td:last-child{
+	padding-right: 0;
+}
+#cursorColor{
+	height: 100px;
+	width: 100px;
+	border: 1px solid #888;
+}
+
+.reallysticky{
+	top: 0;
+}
+.reallysticky.sticking{
+	position: fixed;
+}
+table.fill{
+	width: 100%;
+}
+td.fill{
+	width: 100%;
+}
+.oppose>tr>td:first-child,
+.oppose>tbody>tr>td:first-child{
+	text-align: left;
+}
+.oppose>tr>td:last-child,
+.oppose>tbody>tr>td:last-child{
+	text-align: right;
+}
+#imageTable{
+	display: inline-table;
+	max-width: 940px;
+}
+#canvas_current{
+	position: absolute;
+	left:0;
+	top:0;
+}
+
+th button, th .button{
+	font-size: 75%;
+}
+canvas.hidden{
+	z-index:-1;
+	opacity:0;
+}
+canvas{
+	z-index: 1;
+	background-image: url("../img/ps-transparency-tiles.png");
+	background-position: top left;
+	background-repeat: repeat;
+}
+#toggle_left{
+	font-size: 50%;
+	position: absolute;
+	left: -1em;
+	width: 2em;
+	height: 4em;
+	opacity: 0.5;
+	cursor: pointer;
+    top: 50%;
+	transform: translate(0, -50%);
+	overflow: hidden;
+	display: inline-table;
+	vertical-align: middle;
+	transition: all 0.5s;
+}
+#toggle_left:hover{
+	opacity: 1;
+}
+#toggle_left .inner{
+	display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+	height: 4em;
+	width: 4em;
+	margin-left: -2em;
+	border-radius: 100%;
+	background: #555;
+	color: #fff;
+}
+#toggle_left .inner:after{
+	font-size: 150%;
+	content: "❰";
+	padding-left: 0.75em;
+}
+.left-hidden #toggle_left .inner:after{
+	content: "❱";
+}
+
+#imageTable.left-hidden>tbody>tr>:first-child{
+	display: none;
+}
+
+.palette_color{
+	display: table-row;
+	width: 100%;
+	font-size: 0.85rem;
+	margin-bottom: 0.25em;
+	cursor: default;
+}
+.palette_color .left,
+.palette_color .right{
+	display: table-cell;
+	vertical-align: top;
+	padding: 0.5em;
+	padding-left: 0;
+}
+.palette_color .right{
+	padding-right: 0;
+}
+.palette_color .color{
+	display: inline-block;
+	width: 40px;
+	height: 15px;
+	border: 1px solid #888;
+}
+.palette_color h4{
+	margin: 0 0 0.25em;
+}
+.palette_color h4 span{
+	opacity: 0.8;
+	font-weight: 300;
+	font-size: 80%;
+}
+.palette_color i{
+	opacity: 0.8;
+}
+.palette_color.hidden{
+	display: none;
+}
+
+.imgWidth{
+	width: var(--img_width);
+}
+
+.filter{
+	position: relative;
+}
+.filter input{
+	width: 100%;
+}
+.closer{
+	display: inline-flex;
+	width: 1.5em;
+	height: 1.5em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+	vertical-align: middle;
+	background: #810;
+	color: #fff;
+	font-weight: bold;
+	opacity: 0.5;
+	transition: opacity 0.5s;
+	cursor: pointer;
+}
+.closer:hover{
+	opacity: 1;
+}
+.closer:after{
+	content: "x";
+}
+
+.filter .closer{
+	position: absolute;
+	height: calc(100% - 4px);
+	right: 2px;
+	top: 2px;
+}

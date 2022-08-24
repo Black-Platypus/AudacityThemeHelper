@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Audacity Theme Helper</title>
+		<script src="ImageCache-files/js/jquery-3.6.0.min.js"></script>
+		<script src="ImageCache-files/js/bp_funcs.js"></script>
+		<link rel="stylesheet" href="ImageCache-files/css/style.css" />
+		<link rel="icon" type="image/x-icon" href="ImageCache-files/img/icon.ico">
+	</head>
+	<body>
+		<div id="mainWrapper">
+			<table id="imageTable">
+				<tbody>
+					<tr>
+						<th>
+							<h4><i class="ud leftFile">Current: ImageCache.png</i> &nbsp; &nbsp; <input type="file" id="currentFile" accept="image/png" style="display: none;" /><label for="currentFile" class="button" title="A canvas can't be inspected if it was 'tainted' by a local file, which aren't considered secure by modern browsers.
+Believe me, I've tried, but the only way to keep this local/serverless is to use a file dialog :(">Load new...</label></h4>
+							
+						</th>
+						<th>
+							<h4>Compare: &nbsp; &nbsp; <select id="choice_compare"><option name="compareImg" value="add">Add...</option></select></h4>
+							<input type="file" id="newFile" multiple accept="image/png" style="display: none;" />
+						</th>
+					</tr>
+					<tr>
+						<td id="td_current">
+							<div class="imgConstraint">
+								<img id="img_current" src="ImageCache.png" width="440" usemap="#map_img">
+								<canvas id="canvas_current" class="hidden"></canvas>
+							</div>
+						</td>
+						<td id="td_compare">
+							<div class="imgConstraint">
+								<!--img id="transmap" usemap="#map_img" /-->
+								<canvas id="canvas_compare" class="hidden" width="440"></canvas>
+								<div class="notLoaded">
+									<div id="addCompare">+</div>
+								</div>
+							</div>
+							<div id="toggle_left" title="Toggle left image"><div class="inner"></div></div>
+						</td>
+						<!-- <td class="fill">
+						</td> -->
+					</tr>
+					<tr>
+						<td id="colors_current" class="imgWidth">
+							<div class="filter">
+								<input class="colorFilter" placeholder="Filter by name or color" /><div class="closer"></div>
+							</div>
+							<div class="colorlist">
+								
+							</div>
+						</td>
+						<td id="colors_compare" class="imgWidth">
+							<div class="filter">
+								<input class="colorFilter" placeholder="Filter by name or color" /><div class="closer"></div>
+							</div>
+							<div class="colorlist">
+								
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="infobox">
+				<h4 class="ud filename"></h4>
+				<table>
+					<tr><td>Mouse Pos:</td><td class="ud mousepos"></td></tr>
+					<tr><td>Color:<div id="cursorColor"></div></td>
+						<td style="vertical-align: bottom">
+							<table class="fill oppose">
+								<tr><td>R:</td><td class="ud cred"></td></tr>
+								<tr><td>G:</td><td class="ud cgreen"></td></tr>
+								<tr><td>B:</td><td class="ud cblue"></td></tr>
+								<tr><td>A:</td><td class="ud calpha"></td></tr>
+								<tr><td>Hex:</td><td><div class="ud chex"></div><div class="copybutton auto parent"></div></td></tr>
+							</table>
+						</td>
+					</tr>
+					<tr><td>Row:</td><td class="ud row"></td></tr>
+					<tr><td>Column:</td><td class="ud column"></td></tr>
+					<tr><td>Element:</td><td class="ud element"></td></tr>
+					<tr><td>Description:</td><td class="ud desc"></td></tr>
+				</table>
+				<div id="actions">
+					<button id="toggleCropping">Toggle Crop</button>
+				</div>
+			</div>
+		</div>
+		<script src="ImageCache-files/imgData/imgCoords.js"></script>
+		<script src="ImageCache-files/imgData/colorCoords.js"></script>
+		<script src="ImageCache-files/imgData/imgData.js"></script>
+		<script src="ImageCache-files/imgData/affected.js"></script>
+		<script src="ImageCache-files/js/helper.js" ></script>
+	</body>
+</html>
